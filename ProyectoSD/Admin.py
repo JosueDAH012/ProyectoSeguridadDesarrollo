@@ -3,7 +3,7 @@ from flask import Flask, render_template
 from flask_mysqldb import MySQL
 
 # inicializacion
-app = Flask(__name__ , static_url_path='/assets')
+app = Flask(__name__ , static_url_path='/static')
 
 # conexion a base de datos
 app.config['MYSQL_HOST'] = '35.235.106.218'
