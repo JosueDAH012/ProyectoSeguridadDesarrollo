@@ -4,56 +4,7 @@ from flask_mysqldb import MySQL
 
 # inicializacion
 app = Flask(__name__ , static_url_path='/static')
-
-# conexion a base de datos
-app.config['MYSQL_HOST'] = '35.235.106.218'
-app.config['MYSQL_USER'] = 'MowgliG'
-app.config['MYSQL_PASSWORD'] = 'Josuedavid01'
-app.config['MYSQL_DB'] = 'TIENDA'
 mysql = MySQL(app)
-
-# configuracion
-app.secret_key = "server-ca.pem"
-
-print("Conectado a la Base de Datos")
-
-# rutas
-@app.route('/', methods= ['GET', 'POST'])
-def home():
-    return render_template('home.html')
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-
-@app.route('/ccsignup')
-def ccsignup():
-    return render_template('ccsignup.html')
-
-@app.route('/h404')
-def h404():
-    return render_template('h404.html')
-
-@app.route('/h401')
-def h401():
-    return render_template('h401.html')
-
-@app.route('/h500')
-def h500():
-    return render_template('h500.html')
-
-@app.route('/cart')
-def cart():
-    return render_template('cart.html')
-
-@app.route('/password')
-def password():
-    return render_template('password.html')
-
 
 # @app.route('/')
 # def Index():
@@ -109,6 +60,57 @@ def password():
 #    mysql.connection.commit()
 #    flash('Contact Removed Successfully')
 #    return redirect(url_for('Index'))
+
+
+# conexion a base de datos
+app.config['MYSQL_HOST'] = '35.235.106.218'
+app.config['MYSQL_USER'] = 'MowgliG'
+app.config['MYSQL_PASSWORD'] = 'Josuedavid01'
+app.config['MYSQL_DB'] = 'TIENDA'
+
+# configuracion
+app.secret_key = "server-ca.pem"
+
+print("Conectado a la Base de Datos")
+
+# rutas
+@app.route('/', methods= ['GET', 'POST'])
+def home():
+    return render_template('home.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+@app.route('/ccsignup')
+def ccsignup():
+    return render_template('ccsignup.html')
+
+@app.route('/h404')
+def h404():
+    return render_template('h404.html')
+
+@app.route('/h401')
+def h401():
+    return render_template('h401.html')
+
+@app.route('/h500')
+def h500():
+    return render_template('h500.html')
+
+@app.route('/cart')
+def cart():
+    return render_template('cart.html')
+
+@app.route('/password')
+def password():
+    return render_template('password.html')
+
+
 
 
 if __name__ == '__main__':
