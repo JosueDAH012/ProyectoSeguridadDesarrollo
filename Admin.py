@@ -80,15 +80,19 @@ def home():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('inicio/login.html')
 
 @app.route('/signup')
 def signup():
-    return render_template('signup.html')
+    return render_template('inicio/signup.html')
 
 @app.route('/ccsignup')
 def ccsignup():
-    return render_template('ccsignup.html')
+    return render_template('inicio/ccsignup.html')
+
+@app.route('/password')
+def password():
+    return render_template('inicio/password.html')
 
 @app.route('/h404')
 def h404():
@@ -106,9 +110,122 @@ def h500():
 def cart():
     return render_template('cart.html')
 
-@app.route('/password')
-def password():
-    return render_template('password.html')
+@app.route('/teclados')
+def teclados():
+    return render_template('perifericos/teclados.html')
+
+@app.route('/mouse')
+def mouse():
+    return render_template('perifericos/mouse.html')
+
+@app.route('/headset')
+def headset():
+    return render_template('perifericos/headset.html')
+
+@app.route('/mousepad')
+def mousepad():
+    return render_template('perifericos/mousepad.html')
+
+@app.route('/controles')
+def controles():
+    return render_template('perifericos/controles.html')
+
+@app.route('/parlantes')
+def parlantes():
+    return render_template('perifericos/parlantes.html')
+
+@app.route('/webcam')
+def webcam():
+    return render_template('perifericos/webcam.html')
+
+@app.route('/microfonos')
+def microfonos():
+    return render_template('perifericos/microfonos.html')
+
+@app.route('/impresoras')
+def impresoras():
+    return render_template('perifericos/impresoras.html')
+
+@app.route('/combos')
+def combos():
+    return render_template('computadoras/combos.html')
+
+@app.route('/gaming')
+def gaming():
+    return render_template('computadoras/gaming.html')
+
+@app.route('/hogar')
+def hogar():
+    return render_template('computadoras/hogar.html')
+
+@app.route('/laptop')
+def laptop():
+    return render_template('computadoras/laptop.html')
+
+@app.route('/venta')
+def venta():
+    return render_template('computadoras/venta.html')
+
+@app.route('/almacenamiento')
+def almacenamiento():
+    return render_template('componentes/almacenamiento.html')
+
+@app.route('/cases')
+def cases():
+    return render_template('componentes/cases.html')
+
+@app.route('/enfriamiento')
+def enfriamiento():
+    return render_template('componentes/enfriamiento.html')
+
+@app.route('/monitores')
+def monitores():
+    return render_template('componentes/monitores.html')
+
+@app.route('/motherboard')
+def motherboard():
+    return render_template('componentes/motherboard.html')
+
+@app.route('/power')
+def power():
+    return render_template('componentes/power.html')
+
+@app.route('/procesadores')
+def procesadores():
+    return render_template('componentes/procesadores.html')
+
+@app.route('/ram')
+def ram():
+    return render_template('componentes/ram.html')
+
+@app.route('/tarjetavideo')
+def tarjetavideo():
+    return render_template('componentes/tarjetavideo.html')
+
+@app.route('/cables')
+def cables():
+    return render_template('accesorios/cables.html')
+
+@app.route('/encapsuladores')
+def encapsuladores():
+    return render_template('accesorios/encapsuladores.html')
+
+@app.route('/extencion')
+def extencion():
+    return render_template('accesorios/extencion.html')
+
+@app.route('/led')
+def led():
+    return render_template('accesorios/led.html')
+
+@app.route('/pastatermica')
+def pastatermica():
+    return render_template('accesorios/pastatermica.html')
+
+@app.route('/sillas')
+def sillas():
+    return render_template('accesorios/sillas.html')
+
 
 
 
