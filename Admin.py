@@ -123,7 +123,7 @@ def h500():
 
 @app.route('/cart')
 def cart():
-    return render_template('cart.html')
+    return render_template('pagar/cart.html')
 
 @app.route('/test')
 def test():

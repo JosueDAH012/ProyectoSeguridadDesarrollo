@@ -10,98 +10,190 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+
 </head>
 
 <body>
-    <div class="clearfix">
-        <table class="mx-auto" style="width: 50%">
-            <tr >
-                <th class="mr-1">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/IntelvsAmd.jpg" class="card-img-top" alt="Procesadores">
-                        <div class="card-body">
-                            <h5 class="card-title">Procesadores</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('procesadores') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="{{ url_for('home') }}">El Mercadito</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <!--dropdown Computadoras -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Computadoras
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('gaming') }}">Gaming</a>
+                        <a class="dropdown-item" href="{{ url_for('combos') }}">Combos / Kits</a>
+                        <a class="dropdown-item" href="{{ url_for('hogar') }}">Hogar y Oficina</a>
+                        <a class="dropdown-item" href="{{ url_for('laptop') }}">Laptop</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ url_for('venta') }}">Punto de Venta</a>
                     </div>
-                </th>
-                <br>
-                <th class="mr-1">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/Motherboard.jpg" class="card-img-top" alt="Motherboard">
-                        <div class="card-body">
-                            <h5 class="card-title">Tarjetas Madre</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('motherboard') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+                    <!--dropdown Componentes -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Componente
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('procesadores') }}">Procesadores</a>
+                        <a class="dropdown-item" href="{{ url_for('motherboard') }}">Tarjeta Madre</a>
+                        <a class="dropdown-item" href="{{ url_for('ram') }}">Memoria Ram</a>
+                        <a class="dropdown-item" href="{{ url_for('tarjetavideo') }}">Tarjetas de Video</a>
+                        <a class="dropdown-item" href="{{ url_for('almacenamiento') }}">Almacenamiento</a>
+                        <a class="dropdown-item" href="{{ url_for('enfriamiento') }}">Enfriamiento liquido</a>
+                        <a class="dropdown-item" href="{{ url_for('power') }}">Fuentes de Poder</a>
+                        <a class="dropdown-item" href="{{ url_for('cases') }}">Cases y Ventiladores</a>
+                        <a class="dropdown-item" href="{{ url_for('monitores') }}">Monitores</a>
                     </div>
-                </th>
-                <th>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/ram.png" class="card-img-top" alt="Ram">
-                        <div class="card-body">
-                            <h5 class="card-title">Memorias Ram</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('ram') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+                    <!--dropdown Perifericos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Perifericos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('teclados') }}">Teclados</a>
+                        <a class="dropdown-item" href="{{ url_for('mouse') }}">Mouse</a>
+                        <a class="dropdown-item" href="{{ url_for('headset') }}">Headset</a>
+                        <a class="dropdown-item" href="{{ url_for('mousepad') }}">Mousepad</a>
+                        <a class="dropdown-item" href="{{ url_for('controles') }}">Controles</a>
+                        <a class="dropdown-item" href="{{ url_for('parlantes') }}">Parlantes</a>
+                        <a class="dropdown-item" href="{{ url_for('webcam') }}">Webcam</a>
+                        <a class="dropdown-item" href="{{ url_for('microfonos') }}">Microfonos</a>
+                        <a class="dropdown-item" href="{{ url_for('impresoras') }}">Impresoras</a>
                     </div>
-                </th>
-                <th>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/videocart.jpg" class="card-img-top" alt="TarVid">
-                        <div class="card-body">
-                            <h5 class="card-title">Tarjetas de Video</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('tarjetavideo') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+                    <!--dropdown Accesorios -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Accesorios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('cables') }}">Cables</a>
+                        <a class="dropdown-item" href="{{ url_for('encapsuladores') }}">Encapsuladores</a>
+                        <a class="dropdown-item" href="{{ url_for('extencion') }}">Extenciones</a>
+                        <a class="dropdown-item" href="{{ url_for('led') }}">Led</a>
+                        <a class="dropdown-item" href="{{ url_for('pastatermica') }}">Pasta Termica</a>
+                        <a class="dropdown-item" href="{{ url_for('sillas') }}">Sillas Gamer</a>
                     </div>
-                </th>
-            </tr>
-            <tr>
-                <th>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/keyboard.jpg" class="card-img-top" alt="Teclados">
-                        <div class="card-body">
-                            <h5 class="card-title">Teclados</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('teclados') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+
+                <button class="btn btn-light"><a href="{{ url_for('login') }}">Login</a></button>
+            </form>
+        </div>
+    </nav>
+    <br>
+    <div class="container" style="width: 75%; margin: 0 auto;"">
+        <div class=" container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/IntelvsAmd.jpg" class="card-img-top" alt="Procesadores">
+                    <div class="card-body">
+                        <h5 class="card-title">Procesadores</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('procesadores') }}" class="btn btn-primary">Echar una vistaso</a>
                     </div>
-                </th>
-                <th>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/mouse.jpg" class="card-img-top" alt="Mouse">
-                        <div class="card-body">
-                            <h5 class="card-title">Mouse</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('mouse') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/Motherboard.jpg" class="card-img-top" alt="Motherboard">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarjetas Madre</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('motherboard') }}" class="btn btn-primary">Echar una vistaso</a>
                     </div>
-                </th>
-                <th>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/fuentedepoder.jpg" class="card-img-top" alt="FuentPoder">
-                        <div class="card-body">
-                            <h5 class="card-title">Fuentes de Poder</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('power') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/ram.png" class="card-img-top" alt="Ram">
+                    <div class="card-body">
+                        <h5 class="card-title">Memorias Ram</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('ram') }}" class="btn btn-primary">Echar una vistaso</a>
                     </div>
-                </th>
-                <th>
-                    <div class="card" style="width: 18rem;">
-                        <img src="../static/img/silla.jpg" class="card-img-top" alt="SillaGamer">
-                        <div class="card-body">
-                            <h5 class="card-title">Sillas Gamer</h5>
-                            <p class="card-text"></p>
-                            <a href="{{ url_for('sillas') }}" class="btn btn-primary">Echar una vistaso</a>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div class="container" style="width: 75%; margin: 0 auto;"">
+        <div class=" container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/videocart.jpg" class="card-img-top" alt="TarVid">
+                    <div class="card-body">
+                        <h5 class="card-title">Tarjetas de Video</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('tarjetavideo') }}" class="btn btn-primary">Echar una vistaso</a>
                     </div>
-                </th>
-            </tr>
-        </table>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/keyboard.jpg" class="card-img-top" alt="Teclados">
+                    <div class="card-body">
+                        <h5 class="card-title">Teclados</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('teclados') }}" class="btn btn-primary">Echar una vistaso</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/mouse.jpg" class="card-img-top" alt="Mouse">
+                    <div class="card-body">
+                        <h5 class="card-title">Mouse</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('mouse') }}" class="btn btn-primary">Echar una vistaso</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <div class="container" style="width: 75%; margin: 0 auto;"">
+        <div class=" container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/fuentedepoder.jpg" class="card-img-top" alt="FuentPoder">
+                    <div class="card-body">
+                        <h5 class="card-title">Fuentes de Poder</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('power') }}" class="btn btn-primary">Echar una vistaso</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../static/img/silla.jpg" class="card-img-top" alt="SillaGamer">
+                    <div class="card-body">
+                        <h5 class="card-title">Sillas Gamer</h5>
+                        <p class="card-text"></p>
+                        <a href="{{ url_for('sillas') }}" class="btn btn-primary">Echar una vistaso</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
