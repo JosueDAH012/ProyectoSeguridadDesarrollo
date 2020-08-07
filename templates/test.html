@@ -10,180 +10,98 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet" />
+    
 </head>
 
 <body>
-    <div id="subcategories">
-        <div class="clearfix">
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/13-procesadores" title="PROCESADORES" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/13-category_default/procesadores.jpg"
-                                alt="PROCESADORES">
-                        </a>
+    <div class="clearfix">
+        <table class="mx-auto" style="width: 50%">
+            <tr >
+                <th class="mr-1">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/IntelvsAmd.jpg" class="card-img-top" alt="Procesadores">
+                        <div class="card-body">
+                            <h5 class="card-title">Procesadores</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('procesadores') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/13-procesadores">PROCESADORES</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/16-tarjeta-madre" title="TARJETA MADRE" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/16-category_default/tarjeta-madre.jpg"
-                                alt="TARJETA MADRE">
-                        </a>
+                </th>
+                <br>
+                <th class="mr-1">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/Motherboard.jpg" class="card-img-top" alt="Motherboard">
+                        <div class="card-body">
+                            <h5 class="card-title">Tarjetas Madre</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('motherboard') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/16-tarjeta-madre">TARJETA MADRE</a>
-                    </h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/17-memoria-ram" title="MEMORIA RAM" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/17-category_default/memoria-ram.jpg"
-                                alt="MEMORIA RAM">
-                        </a>
+                </th>
+                <th>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/ram.png" class="card-img-top" alt="Ram">
+                        <div class="card-body">
+                            <h5 class="card-title">Memorias Ram</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('ram') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/17-memoria-ram">MEMORIA RAM</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/18-tarjetas-de-video" title="TARJETAS DE VIDEO"
-                            class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/18-category_default/tarjetas-de-video.jpg"
-                                alt="TARJETAS DE VIDEO">
-                        </a>
+                </th>
+                <th>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/videocart.jpg" class="card-img-top" alt="TarVid">
+                        <div class="card-body">
+                            <h5 class="card-title">Tarjetas de Video</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('tarjetavideo') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/18-tarjetas-de-video">TARJETAS DE
-                            VIDEO</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/161-tarjetas-de-sonido" title="TARJETAS DE SONIDO"
-                            class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/es-default-category_default/tarjetas-de-sonido.jpg"
-                                alt="TARJETAS DE SONIDO">
-                        </a>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/keyboard.jpg" class="card-img-top" alt="Teclados">
+                        <div class="card-body">
+                            <h5 class="card-title">Teclados</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('teclados') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/161-tarjetas-de-sonido">TARJETAS DE
-                            SONIDO</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/19-almacenamiento" title="ALMACENAMIENTO" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/19-category_default/almacenamiento.jpg"
-                                alt="ALMACENAMIENTO">
-                        </a>
+                </th>
+                <th>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/mouse.jpg" class="card-img-top" alt="Mouse">
+                        <div class="card-body">
+                            <h5 class="card-title">Mouse</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('mouse') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/19-almacenamiento">ALMACENAMIENTO</a>
-                    </h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/23-enfriamiento" title="ENFRIAMIENTO" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/23-category_default/enfriamiento.jpg"
-                                alt="ENFRIAMIENTO">
-                        </a>
+                </th>
+                <th>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/fuentedepoder.jpg" class="card-img-top" alt="FuentPoder">
+                        <div class="card-body">
+                            <h5 class="card-title">Fuentes de Poder</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('power') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/23-enfriamiento">ENFRIAMIENTO</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/24-fuentes-de-poder" title="FUENTES DE PODER"
-                            class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/24-category_default/fuentes-de-poder.jpg"
-                                alt="FUENTES DE PODER">
-                        </a>
+                </th>
+                <th>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../static/img/silla.jpg" class="card-img-top" alt="SillaGamer">
+                        <div class="card-body">
+                            <h5 class="card-title">Sillas Gamer</h5>
+                            <p class="card-text"></p>
+                            <a href="{{ url_for('sillas') }}" class="btn btn-primary">Echar una vistaso</a>
+                        </div>
                     </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/24-fuentes-de-poder">FUENTES DE
-                            PODER</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/25-cases" title="CASES" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/25-category_default/cases.jpg"
-                                alt="CASES">
-                        </a>
-                    </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/25-cases">CASES</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/26-ventiladores" title="VENTILADORES" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/26-category_default/ventiladores.jpg"
-                                alt="VENTILADORES">
-                        </a>
-                    </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/26-ventiladores">VENTILADORES</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/27-monitores" title="MONITORES" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/27-category_default/monitores.jpg"
-                                alt="MONITORES">
-                        </a>
-                    </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/27-monitores">MONITORES</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/28-reguladores-y-ups" title="REGULADORES Y UPS"
-                            class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/28-category_default/reguladores-y-ups.jpg"
-                                alt="REGULADORES Y UPS">
-                        </a>
-                    </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/28-reguladores-y-ups">REGULADORES Y
-                            UPS</a></h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-xs-6 col-sp-12">
-                <div class="subcategories scene_cat">
-                    <div class="image">
-                        <a href="http://extremetechcr.com/tienda/157-accesorios" title="ACCESORIOS" class="img">
-                            <img class="replace-2x img-responsive"
-                                src="http://f5e6t5d2.stackpathcdn.com/tienda/c/es-default-category_default/accesorios.jpg"
-                                alt="ACCESORIOS">
-                        </a>
-                    </div>
-                    <h5 class="cat-name"><a href="http://extremetechcr.com/tienda/157-accesorios">ACCESORIOS</a></h5>
-                </div>
-            </div>
-        </div>
-
+                </th>
+            </tr>
+        </table>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -9,8 +9,102 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
-  <body>
-      <h1>sillas gamer</h1>
+  <body class="sb-nav-fixed">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="{{ url_for('home') }}">El Mercadito</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <!--dropdown Computadoras -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Computadoras
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('gaming') }}">Gaming</a>
+              <a class="dropdown-item" href="{{ url_for('combos') }}">Combos / Kits</a>
+              <a class="dropdown-item" href="{{ url_for('hogar') }}">Hogar y Oficina</a>
+              <a class="dropdown-item" href="{{ url_for('laptop') }}">Laptop</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="{{ url_for('venta') }}">Punto de Venta</a>
+            </div>
+            <!--dropdown Componentes -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Componente
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('procesadores') }}">Procesadores</a>
+              <a class="dropdown-item" href="{{ url_for('motherboard') }}">Tarjeta Madre</a>
+              <a class="dropdown-item" href="{{ url_for('ram') }}">Memoria Ram</a>
+              <a class="dropdown-item" href="{{ url_for('tarjetavideo') }}">Tarjetas de Video</a>
+              <a class="dropdown-item" href="{{ url_for('almacenamiento') }}">Almacenamiento</a>
+              <a class="dropdown-item" href="{{ url_for('enfriamiento') }}">Enfriamiento liquido</a>
+              <a class="dropdown-item" href="{{ url_for('power') }}">Fuentes de Poder</a>
+              <a class="dropdown-item" href="{{ url_for('cases') }}">Cases y Ventiladores</a>
+              <a class="dropdown-item" href="{{ url_for('monitores') }}">Monitores</a>
+            </div>
+            <!--dropdown Perifericos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Perifericos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('teclados') }}">Teclados</a>
+              <a class="dropdown-item" href="{{ url_for('mouse') }}">Mouse</a>
+              <a class="dropdown-item" href="{{ url_for('headset') }}">Headset</a>
+              <a class="dropdown-item" href="{{ url_for('mousepad') }}">Mousepad</a>
+              <a class="dropdown-item" href="{{ url_for('controles') }}">Controles</a>
+              <a class="dropdown-item" href="{{ url_for('parlantes') }}">Parlantes</a>
+              <a class="dropdown-item" href="{{ url_for('webcam') }}">Webcam</a>
+              <a class="dropdown-item" href="{{ url_for('microfonos') }}">Microfonos</a>
+              <a class="dropdown-item" href="{{ url_for('impresoras') }}">Impresoras</a>
+            </div>
+            <!--dropdown Accesorios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Accesorios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{{ url_for('cables') }}">Cables</a>
+              <a class="dropdown-item" href="{{ url_for('encapsuladores') }}">Encapsuladores</a>
+              <a class="dropdown-item" href="{{ url_for('extencion') }}">Extenciones</a>
+              <a class="dropdown-item" href="{{ url_for('led') }}">Led</a>
+              <a class="dropdown-item" href="{{ url_for('pastatermica') }}">Pasta Termica</a>
+              <a class="dropdown-item" href="{{ url_for('sillas') }}">Sillas Gamer</a>
+            </div>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <h1>Sillas</h1>
+    <br>
+    <div class="position-relative">
+      <div id="layoutAuthentication_footer"></div>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; El Mercadito</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
