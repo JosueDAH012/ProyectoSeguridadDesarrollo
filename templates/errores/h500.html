@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>h401</title>
+    <title>h500</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,12 +22,12 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
                             <div class="text-center mt-4">
-                                <h1 class="display-1">401</h1>
-                                <p class="lead">Unauthorized</p>
-                                <p>Access to this resource is denied.</p>
+                                <h1 class="display-1"></h1>
+                                <img class="mb-4 img-error" src="../../static/img/error500.png" width="400" height="400"/>
+                                <p class="lead"></p>
                                 <a href="{{ url_for('home') }}">
                                     <i class="fas fa-arrow-left mr-1"></i>
-                                    Return to Dashboard
+                                    Regresar
                                 </a>
                             </div>
                         </div>
@@ -35,20 +35,20 @@
                 </div>
             </main>
         </div>
-        <div id="layoutAuthentication_footer"></div>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; El Mercadito</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
+
+        <div class="fixed-bottom">
+            <div id="layoutAuthentication_footer"></div>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; El Mercadito</div>
+                        <div>
+                            <a href="{{ url_for('terminos') }}">Privacy Policy · Terms &amp; Conditions</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
-    </div>
+            </footer>
+        </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

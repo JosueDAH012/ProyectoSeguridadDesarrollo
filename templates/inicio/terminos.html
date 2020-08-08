@@ -14,6 +14,11 @@
 
 <body>
     <div>
+        <div class="float-left">
+            <p class="container-fluid">
+                <a href="{{ url_for('home') }}">Home</a>
+            </p>
+        </div>
         <h2 style="text-align: center;"><strong>POLÍTICA DE PRIVACIDAD</strong></h2>
         <div style="text-align: justify; width: 80%; margin: 0 auto;">
             <p>&nbsp;</p>
@@ -104,6 +109,25 @@
                 cualquier
                 momento.</p>
         </div>
+    </div>
+    <div class="float-right">
+        <p class="container-fluid">
+            <a href="{{ url_for('terminos') }}">Volver arriba</a>
+        </p>
+    </div>
+    <br>
+    <div class="position-relative">
+        <div id="layoutAuthentication_footer"></div>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; El Mercadito</div>
+                    <div>
+                        <a href="{{ url_for('terminos') }}">Privacy Policy · Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
