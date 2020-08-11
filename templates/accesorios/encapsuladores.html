@@ -113,26 +113,72 @@
     </nav>
   </div>
   <br>
-  <h1>Encapsuladores</h1>
-  <br>
-  <div class="float-right">
-    <p class="container-fluid">
-      <a href="{{ url_for('encapsuladores') }}">Volver arriba</a>
-    </p>
-  </div>
-  <br>
-  <div class="position-relative">
-    <div id="layoutAuthentication_footer"></div>
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; El Mercadito</div>
-          <div>
-            <a href="{{ url_for('terminos') }}">Privacy Policy · Terms &amp; Conditions</a>
+  <div class="container" style="width: 75%; margin: 0 auto;">
+    <div class=" container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img src="../static/img/" class="card-img-top" style="height: 200px; width: 286px;" alt="cable hmdi">
+            <div class="card-body">
+              <h5 class="card-title">Cable hdmi</h5>
+              <p class="card-text"></p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img src="../static/img/" class="card-img-top" style="height: 200px; width: 286px;" alt="Cable VGA">
+            <div class="card-body">
+              <h5 class="card-title">Cable VGA</h5>
+              <p class="card-text"></p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img src="../static/img/" class="card-img-top" style="height: 200px; width: 286px;" alt="Cable ">
+            <div class="card-body">
+              <h5 class="card-title">Cable VGA</h5>
+              <p class="card-text"></p>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+  </div>
+  <br>
+  <div class="fixed-bottom">
+    <div class="float-right">
+      <p class="container-fluid">
+        <a href="{{ url_for('encapsuladores') }}">Volver arriba</a>
+      </p>
+    </div>
+    <br>
+    <div class="position-relative">
+      <div id="layoutAuthentication_footer"></div>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; El Mercadito</div>
+            <div>
+              <a href="{{ url_for('terminos') }}">Privacy Policy · Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
