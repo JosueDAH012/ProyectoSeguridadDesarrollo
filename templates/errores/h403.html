@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>h500</title>
+    <title>error 403</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +10,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="shortcut icon" href="../static/img/shop.png">
 </head>
 
 <body>
@@ -21,9 +20,10 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
                             <div class="text-center mt-4">
-                                <h1 class="display-1"></h1>
-                                <img class="mb-4 img-error" src="../../static/img/errors/error500.png" width="400" height="400"/>
-                                <p class="lead">Internal Server Error.</p>
+                                <img class="mb-4 img-error" src="../../static/img/errors/error-403.jpg" width="300"
+                                    height="300" />
+                                <p class="lead">No autorizado</p>
+                                <p>Se deniega el acceso a este recurso.</p>
                                 <a href="{{ url_for('home') }}">
                                     <i class="fas fa-arrow-left mr-1"></i>
                                     Regresar
@@ -34,7 +34,6 @@
                 </div>
             </main>
         </div>
-        <br>
         <div class="fixed-bottom">
             <div id="layoutAuthentication_footer"></div>
             <footer class="py-4 bg-light mt-auto">
