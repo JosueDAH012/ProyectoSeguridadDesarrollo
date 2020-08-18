@@ -73,11 +73,11 @@
                 <a class="dropdown-item" href="{{ url_for('microfonos') }}">Microfonos</a>
                 <a class="dropdown-item" href="{{ url_for('impresoras') }}">Impresoras</a>
               </div>
-              <!--dropdown Componentes -->
+              <!--dropdown Accesorios -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                Componentes
+                Accesorios
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ url_for('cables') }}">Cables</a>
@@ -89,23 +89,36 @@
               </div>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <a class="btn btn-light btn-sm ml-3" href="{{ url_for('login') }}">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor"
+            <span class="btn btn-light btn-sm ml-3">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z" />
-                <path fill-rule="evenodd"
-                  d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z" />
-                <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z" />
-              </svg> Iniciar Sesion
-            </a>
+                <path
+                  d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+              </svg>
+              {{session['username']}}
+            </span>
             <a class="btn btn-success btn-sm ml-3" href="{{ url_for('cart') }}">
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bag" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
                   d="M14 5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5zM1 4v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1z" />
                 <path d="M8 1.5A2.5 2.5 0 0 0 5.5 4h-1a3.5 3.5 0 1 1 7 0h-1A2.5 2.5 0 0 0 8 1.5z" />
-              </svg> Cartera
+              </svg>
+              Cartera
+            </a>
+            <a href="/salir" class="btn btn-danger btn-sm ml-3" role="button" aria-pressed="true">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path fill-rule="evenodd"
+                  d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
+                <path fill-rule="evenodd"
+                  d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
+              </svg>
+              Salir
             </a>
           </form>
         </div>
@@ -118,7 +131,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asrock-365m.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asrock-365m">
+            <img src="../../static/img/Componentes/Motherboard/asrock-365m.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asrock-365m">
             <div class="card-body">
               <h5 class="card-title">Asrock 365M</h5>
               <p class="card-text"></p>
@@ -131,7 +145,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asrock-a320m-hdv.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asrock-a320m-hdv">
+            <img src="../../static/img/Componentes/Motherboard/asrock-a320m-hdv.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asrock-a320m-hdv">
             <div class="card-body">
               <h5 class="card-title">Asrock A320M HDV</h5>
               <p class="card-text"></p>
@@ -144,7 +159,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asrock-B460 Phantom Gaming.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asrock-B460 Phantom Gaming">
+            <img src="../../static/img/Componentes/Motherboard/asrock-B460 Phantom Gaming.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asrock-B460 Phantom Gaming">
             <div class="card-body">
               <h5 class="card-title">Asrock B460 Phantom Gaming</h5>
               <p class="card-text"></p>
@@ -164,7 +180,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asrock-b460m-hdv.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asrock-b460m-hdv">
+            <img src="../../static/img/Componentes/Motherboard/asrock-b460m-hdv.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asrock-b460m-hdv">
             <div class="card-body">
               <h5 class="card-title">Asrock B460M HDV</h5>
               <p class="card-text"></p>
@@ -177,7 +194,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asrock-h310cm.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asrock-h310cm">
+            <img src="../../static/img/Componentes/Motherboard/asrock-h310cm.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asrock-h310cm">
             <div class="card-body">
               <h5 class="card-title">Asrock H310CM</h5>
               <p class="card-text"></p>
@@ -190,7 +208,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asrock-Z490-Pro4.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asrock-Z490-Pro4">
+            <img src="../../static/img/Componentes/Motherboard/asrock-Z490-Pro4.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asrock-Z490-Pro4">
             <div class="card-body">
               <h5 class="card-title">Asrock Z490 Pro4</h5>
               <p class="card-text"></p>
@@ -210,7 +229,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/asus-z390.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="asus-z390">
+            <img src="../../static/img/Componentes/Motherboard/asus-z390.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="asus-z390">
             <div class="card-body">
               <h5 class="card-title">Asus Z390</h5>
               <p class="card-text"></p>
@@ -223,7 +243,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/gigabyte_b450m.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="gigabyte_b450m">
+            <img src="../../static/img/Componentes/Motherboard/gigabyte_b450m.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="gigabyte_b450m">
             <div class="card-body">
               <h5 class="card-title">Gigabyte B450M</h5>
               <p class="card-text"></p>
@@ -236,7 +257,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/gigabyte-b365m.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="gigabyte-b365m">
+            <img src="../../static/img/Componentes/Motherboard/gigabyte-b365m.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="gigabyte-b365m">
             <div class="card-body">
               <h5 class="card-title">Gigabyte B365M</h5>
               <p class="card-text"></p>
@@ -256,7 +278,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/gigabyte-b460m-ds3h.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="gigabyte-b460m">
+            <img src="../../static/img/Componentes/Motherboard/gigabyte-b460m-ds3h.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="gigabyte-b460m">
             <div class="card-body">
               <h5 class="card-title">Gigabyte B460M</h5>
               <p class="card-text"></p>
@@ -269,7 +292,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/gigabyte-gah110mh.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="gigabyte-gah110mh">
+            <img src="../../static/img/Componentes/Motherboard/gigabyte-gah110mh.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="gigabyte-gah110mh">
             <div class="card-body">
               <h5 class="card-title">Gigabyte GAH110MH</h5>
               <p class="card-text"></p>
@@ -282,7 +306,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/Motherboard-Gigabyte-X570-UD.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="Motherboard-Gigabyte-X570-UD">
+            <img src="../../static/img/Componentes/Motherboard/Motherboard-Gigabyte-X570-UD.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="Motherboard-Gigabyte-X570-UD">
             <div class="card-body">
               <h5 class="card-title">Gigabyte X570 UD</h5>
               <p class="card-text"></p>
@@ -302,7 +327,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/msi_z87-g43.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="msi_z87-g43">
+            <img src="../../static/img/Componentes/Motherboard/msi_z87-g43.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="msi_z87-g43">
             <div class="card-body">
               <h5 class="card-title">MSI Z87 G43</h5>
               <p class="card-text"></p>
@@ -315,7 +341,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/msi-b450m.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="msi-b450m">
+            <img src="../../static/img/Componentes/Motherboard/msi-b450m.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="msi-b450m">
             <div class="card-body">
               <h5 class="card-title">MSI B450M</h5>
               <p class="card-text"></p>
@@ -328,7 +355,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/msi-meg-z490-godlike.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="msi-meg-z490-godlike">
+            <img src="../../static/img/Componentes/Motherboard/msi-meg-z490-godlike.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="msi-meg-z490-godlike">
             <div class="card-body">
               <h5 class="card-title">MSI MEG Z490 Godlike</h5>
               <p class="card-text"></p>
@@ -348,7 +376,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/msi-mpg-z390.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="msi-mpg-z390">
+            <img src="../../static/img/Componentes/Motherboard/msi-mpg-z390.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="msi-mpg-z390">
             <div class="card-body">
               <h5 class="card-title">MSI MPG Z390</h5>
               <p class="card-text"></p>
@@ -361,7 +390,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/msi-mpg-z390-pro.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="msi-mpg-z390-pro">
+            <img src="../../static/img/Componentes/Motherboard/msi-mpg-z390-pro.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="msi-mpg-z390-pro">
             <div class="card-body">
               <h5 class="card-title">MSI MPG Z390 Pro</h5>
               <p class="card-text"></p>
@@ -374,7 +404,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/msi-mpg-z390-pro-carbon.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="msi-mpg-z390-pro-carbon">
+            <img src="../../static/img/Componentes/Motherboard/msi-mpg-z390-pro-carbon.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="msi-mpg-z390-pro-carbon">
             <div class="card-body">
               <h5 class="card-title">MSI MPG Z390 Pro Carbon</h5>
               <p class="card-text"></p>
@@ -394,7 +425,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/rog-strix-b550e.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="rog-strix-b550e">
+            <img src="../../static/img/Componentes/Motherboard/rog-strix-b550e.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="rog-strix-b550e">
             <div class="card-body">
               <h5 class="card-title">ROG STRIX B550E</h5>
               <p class="card-text"></p>
@@ -407,7 +439,8 @@
         </div>
         <div class="col-md-4">
           <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Motherboard/rog-tuf-z370plus.jpg" class="card-img-top" style="height: 200px; width: 286px;" alt="rog-tuf-z370plus">
+            <img src="../../static/img/Componentes/Motherboard/rog-tuf-z370plus.jpg" class="card-img-top"
+              style="height: 200px; width: 286px;" alt="rog-tuf-z370plus">
             <div class="card-body">
               <h5 class="card-title">ROG TUF Z370 Plus</h5>
               <p class="card-text"></p>

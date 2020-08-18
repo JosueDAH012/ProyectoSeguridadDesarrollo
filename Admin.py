@@ -116,10 +116,18 @@ def signup():
 
             if account:
                 flash("Esta cuenta ya existe!", "alert-warning")
+            elif not re.match(r'[A-Za-z]+', nombre):
+                flash("El nombre debe contener solo letras", "alert-warning")
+            elif not re.match(r'[A-Za-z]+', apellido):
+                flash("El apellido debe contener solo letras", "alert-warning")
+            elif not re.match(r'[0-9]+', cedula):
+                flash("La cedula solo debe tener números", "alert-warning")
             elif not re.match(r'[^@]+@[^@]+\.[^@]+', correo):
                 flash("Correo invalido!", "alert-warning")
-            elif not re.match(r'[A-Za-z]+', nombre):
-                flash("El nombre debe contener solo caracteres!", "alert-warning")
+            elif not re.match(r'[0-9]+', telefono):
+                flash("El telefono solo debe tener números", "alert-warning")
+            elif not re.match(r'[A-Za-z0-9]+', password):
+                flash("La contraseña solo debe tener números y letras", "alert-warning")
             else:
                 sQuery = "INSERT INTO Usuario (Nombre, Apellido, Cedula, Correo, Telefono, Password) VALUES ( %s, %s, %s, %s, %s, %s)"
                 cursor.execute(sQuery, [nombre, apellido, cedula, correo, telefono, password_encriptado])
@@ -147,10 +155,7 @@ def password():
 
 @app.route('/terminos')
 def terminos():
-    if 'username' in session:
-        return render_template('home.html')
-    else:
-        return render_template('inicio/terminos.html')
+    return render_template('inicio/terminos.html')
 
 
 @app.route('/Bloqueado')
