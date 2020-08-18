@@ -1,7 +1,9 @@
 
-Bpython:S125$"Remove this commented out code.(é­ñÜøÿÿÿÿ8œëí¾.
-Bpython:S1250"Remove this commented out code.(»ë”üÿÿÿÿ8œëí¾.
-=python:S1259"Remove this commented out code.(€»Á8œëí¾.
-<python:S125K"Remove this commented out code.(öÕÚ
-8œëí¾.
-Bpython:S125"Remove this commented out code.(åßëäûÿÿÿÿ8œëí¾.
+hpython:S3827†"CNombre is not defined. Change its name or define it before using it(É˜¨¯üÿÿÿÿ8áß§ö¿.
+gpython:S1763‰"GDelete this unreachable code or refactor the code to make it reachable.(È¡‡˜8áß§ö¿.
+ipython:S11922"JDefine a constant instead of duplicating this literal 'home.html' 4 times.(Å‰‘¸8¡Ë—÷¿.
+qpython:S11924"RDefine a constant instead of duplicating this literal 'inicio/login.html' 6 times.(È¡‡˜8¡Ë—÷¿.
+tpython:S117J"WRename this local variable "Correo" to match the regular expression ^[_a-z][a-z0-9_]*$.(¿¢(8¡Ë—÷¿.
+upython:S117O"WRename this local variable "sQuery" to match the regular expression ^[_a-z][a-z0-9_]*$.(³Ô³Ò8¡Ë—÷¿.
+{python:S117€"WRename this local variable "sQuery" to match the regular expression ^[_a-z][a-z0-9_]*$.(®ñºµøÿÿÿÿ8¡Ë—÷¿.
+Vpython:S1481t"7Remove the unused local variable "password_encriptado".(‚ğ8¡Ë—÷¿.

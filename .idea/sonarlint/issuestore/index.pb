@@ -83,3 +83,7 @@ C
 templates/test.html,9\5\95a0c647043017796e7188ff6005b70fc6b0d90f
 K
 templates/errores/h404.html,3\b\3b708c7325c4e761957432bdc9007ad9b52bea6b
+B
+editsdb/index.html,2\8\2875acea35095fb8d743d652f9aa5ec9a7265c67
+I
+editsdb/edit-contact.html,d\4\d4767c22e5c9af3c350bd85fd3a3986399584ac7

@@ -1,7 +1,10 @@
 # importaciones de la libreria de Flask para la base de datos y web
 from flask import Flask, render_template, request, flash, redirect, url_for, session, abort
 from flask_mysqldb import MySQL
+import MySQLdb.cursors
 import bcrypt
+import re
+
 
 from logging.config import dictConfig
 
@@ -25,61 +28,6 @@ dictConfig({
 app = Flask(__name__, static_url_path='/static')
 mysql = MySQL(app)
 
-# @app.route('/')
-# def Index():
-#    cur = mysql.connection.cursor()
-#    cur.execute('SELECT * FROM contacts')
-#    data = cur.fetchall()
-#    cur.close()
-#    return render_template('index.html', contacts = data)
-
-# @app.route('/add_contact', methods=['POST'])
-# def add_contact():
-#    if request.method == 'POST':
-#        fullname = request.form['fullname']
-#        phone = request.form['phone']
-#        email = request.form['email']
-#        cur = mysql.connection.cursor()
-#        cur.execute("INSERT INTO contacts (fullname, phone, email) VALUES (%s,%s,%s)", (fullname, phone, email))
-#        mysql.connection.commit()
-#        flash('Contact Added successfully')
-#        return redirect(url_for('Index'))
-
-# @app.route('/edit/<id>', methods = ['POST', 'GET'])
-# def get_contact(id):
-#    cur = mysql.connection.cursor()
-#    cur.execute('SELECT * FROM contacts WHERE id = %s', (id))
-#    data = cur.fetchall()
-#    cur.close()
-#    print(data[0])
-#    return render_template('edit-contact.html', contact = data[0])
-
-# @app.route('/update/<id>', methods=['POST'])
-# def update_contact(id):
-#    if request.method == 'POST':
-#        fullname = request.form['fullname']
-#        phone = request.form['phone']
-#        email = request.form['email']
-#        cur = mysql.connection.cursor()
-#        cur.execute("""
-#            UPDATE contacts
-#            SET fullname = %s,
-#                email = %s,
-#                phone = %s
-#            WHERE id = %s
-#        """, (fullname, email, phone, id))
-#        flash('Contact Updated Successfully')
-#        mysql.connection.commit()
-#        return redirect(url_for('Index'))
-
-# @app.route('/delete/<string:id>', methods = ['POST','GET'])
-# def delete_contact(id):
-#    cur = mysql.connection.cursor()
-#    cur.execute('DELETE FROM contacts WHERE id = {0}'.format(id))
-#    mysql.connection.commit()
-#    flash('Contact Removed Successfully')
-#    return redirect(url_for('Index'))
-
 
 # conexion a base de datos
 app.config['MYSQL_HOST'] = '35.235.106.218'
@@ -92,28 +40,111 @@ app.secret_key = "server-ca.pem"
 
 print("Conectado a la Base de Datos")
 
-# rutas
+# semilla para encriptamiento
+semilla = bcrypt.gensalt()
+
+# ruta para la clase principal
 
 
 @app.route('/')
+def main():
+    if 'nombre' in session:
+        return render_template('home.html')
+    else:
+        return render_template('inicio/login.html')
+
+# ruta para la clase home
+
+
+@app.route('/home',)
 def home():
+    if 'Nombre' in session:
+        return render_template('home.html')
+    else:
+        return render_template('inicio/login.html')
+
+# ruta para la clase login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if (request.method == "GET"):
+        if 'username' in session:
+            return render_template('home.html')
+        else:
+            return render_template('inicio/login.html')
+    else:
+        if request.method == 'POST' and 'emailLogin' in request.form and 'passwordLogin' in request.form:
+            correo = request.form['emailLogin']
+            password = request.form['passwordLogin']
+            password_encode = password.encode("utf-8")
+
+            cursor = mysql.connection.cursor()
+            sQuery = "SELECT * FROM Usuario WHERE Correo = %s"
+            cursor.execute(sQuery, [correo])
+            account = cursor.fetchone()
+            cursor.close()
+
+            if (account != None):
+                password_encriptado_encode = account[1].encode()
+                if (bcrypt.checkpw(password_encode,password_encriptado_encode)):
+                    session['loggedin'] = True
+                    session['username'] = account['username']
+                    session['correo'] = account['correo']
+                    return redirect(url_for('home'))
+                else:
+                    flash("El Password o Correo no son correctos", "alert-warning")
+                    return render_template('inicio/login.html')
+            else:
+                flash("El Correo no existe", "alert-warning")
+                return render_template('inicio/login.html')
     return render_template('home.html')
 
 
-@app.route('/login',)
-def login():
+# ruta para la clase registrar
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if (request.method == "GET"):
+        if 'username' in session:
+            return render_template('home.html')
+        else:
+            return render_template('inicio/signup.html')
+    else:
+        if request.method == 'POST' and 'nameRegistro' in request.form and 'surnameRegistro' in request.form and 'idRegistro' in request.form and 'emailRegistro' in request.form and 'phoneRegistro' in request.form and 'passwordRegistro' in request.form:
 
+            nombre = request.form['nameRegistro']
+            apellido = request.form['surnameRegistro']
+            cedula = request.form['idRegistro']
+            correo = request.form['emailRegistro']
+            telefono = request.form['phoneRegistro']
+            password = request.form['passwordRegistro']
+            password_encode = password.encode("utf-8")
+            password_encriptado = bcrypt.hashpw(password_encode, semilla)
+            cursor = mysql.connection.cursor()
+            cursor.execute('SELECT * FROM Usuario WHERE Correo = %s', [correo])
+            account = cursor.fetchone()
+
+            if account:
+                flash("Esta cuenta ya existe!", "alert-warning")
+            elif not re.match(r'[^@]+@[^@]+\.[^@]+', correo):
+                flash("Correo invalido!", "alert-warning")
+            elif not re.match(r'[A-Za-z]+', nombre):
+                flash("El nombre debe contener solo caracteres!", "alert-warning")
+            else:
+                sQuery = "INSERT INTO Usuario (Nombre, Apellido, Cedula, Correo, Telefono, Password) VALUES ( %s, %s, %s, %s, %s, %s)"
+                cursor.execute(sQuery, [nombre, apellido, cedula, correo, telefono, password_encriptado])
+                mysql.connection.commit()
+                flash("Se ha registrado exitosamente!", "alert-warning")
+        elif request.method == 'POST':
+            flash("Por favor rellena el formulario!", "alert-warning")
+        return redirect(url_for('home'))
     return render_template('inicio/login.html')
 
 
-@app.route('/signup')
-def signup():
-    return render_template('inicio/signup.html')
+app.route("/salir")
 
 
-@app.route('/ccsignup')
-def ccsignup():
-    return render_template('inicio/ccsignup.html')
+def salir():
+    session.clear()
+    return redirect(url_for('login'))
 
 
 @app.route('/password')
@@ -121,35 +152,50 @@ def password():
     return render_template('inicio/password.html')
 
 
-
-
 @app.route('/terminos')
 def terminos():
     return render_template('inicio/terminos.html')
+
 
 @app.route('/Bloqueado')
 def h401():
     return abort('401')
 
+
 @app.errorhandler(401)
 def access_error(error):
     return render_template('errores/h401.html'), 401
+
+
+@app.route('/Prohibido')
+def h403():
+    return abort('403')
+
+
+@app.errorhandler(403)
+def access_error(error):
+    return render_template('errores/h403.html'), 403
+
 
 @app.route('/SinAcceso')
 def h404():
     return abort('404')
 
+
 @app.errorhandler(404)
 def access_error(error):
     return render_template('errores/h404.html'), 404
+
 
 @app.route('/InternalServerError')
 def h500():
     return abort('500')
 
+
 @app.errorhandler(500)
 def access_error(error):
     return render_template('errores/h500.html'), 500
+
 
 @app.route('/cart')
 def cart():
