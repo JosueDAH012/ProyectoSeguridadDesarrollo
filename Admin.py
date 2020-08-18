@@ -1,10 +1,8 @@
 # importaciones de la libreria de Flask para la base de datos y web
 from flask import Flask, render_template, request, flash, redirect, url_for, session, abort
 from flask_mysqldb import MySQL
-import MySQLdb.cursors
 import bcrypt
 import re
-
 
 from logging.config import dictConfig
 
@@ -28,7 +26,6 @@ dictConfig({
 app = Flask(__name__, static_url_path='/static')
 mysql = MySQL(app)
 
-
 # conexion a base de datos
 app.config['MYSQL_HOST'] = '35.235.106.218'
 app.config['MYSQL_USER'] = 'MowgliG'
@@ -37,28 +34,23 @@ app.config['MYSQL_DB'] = 'TIENDA'
 
 # configuracion
 app.secret_key = "server-ca.pem"
-
 print("Conectado a la Base de Datos")
 
 # semilla para encriptamiento
 semilla = bcrypt.gensalt()
 
 # ruta para la clase principal
-
-
 @app.route('/')
 def main():
-    if 'nombre' in session:
+    if 'username' in session:
         return render_template('home.html')
     else:
         return render_template('inicio/login.html')
 
 # ruta para la clase home
-
-
-@app.route('/home',)
+@app.route('/home', )
 def home():
-    if 'Nombre' in session:
+    if 'username' in session:
         return render_template('home.html')
     else:
         return render_template('inicio/login.html')
@@ -84,11 +76,11 @@ def login():
             cursor.close()
 
             if (account != None):
-                password_encriptado_encode = account[1].encode()
-                if (bcrypt.checkpw(password_encode,password_encriptado_encode)):
+                password_encriptado_encode = account[6].encode()
+                if (bcrypt.checkpw(password_encode, password_encriptado_encode)):
                     session['loggedin'] = True
-                    session['username'] = account['username']
-                    session['correo'] = account['correo']
+                    session['username'] = account[1]
+                    session['correo'] = account[4]
                     return redirect(url_for('home'))
                 else:
                     flash("El Password o Correo no son correctos", "alert-warning")
@@ -139,9 +131,7 @@ def signup():
     return render_template('inicio/login.html')
 
 
-app.route("/salir")
-
-
+@app.route("/salir")
 def salir():
     session.clear()
     return redirect(url_for('login'))
@@ -149,12 +139,18 @@ def salir():
 
 @app.route('/password')
 def password():
-    return render_template('inicio/password.html')
+    if 'username' in session:
+        return render_template('home.html')
+    else:
+        return render_template('inicio/password.html')
 
 
 @app.route('/terminos')
 def terminos():
-    return render_template('inicio/terminos.html')
+    if 'username' in session:
+        return render_template('home.html')
+    else:
+        return render_template('inicio/terminos.html')
 
 
 @app.route('/Bloqueado')
