@@ -7,8 +7,6 @@ K
 templates/errores/h403.html,9\1\9174526a4253f4ddf0002d44afa8ac8da246513a
 K
 templates/errores/h401.html,5\a\5a91e673c0bd011dcd2c5a2b94eff56b3aace632
-C
-editsdb/layout.html,9\4\9471be36d015448e72e23da8bae2ec0371d11f34
 B
 static/js/login.js,d\1\d134fe07435500c6755212e5a8871664954efb57
 P
@@ -83,7 +81,7 @@ C
 templates/test.html,9\5\95a0c647043017796e7188ff6005b70fc6b0d90f
 K
 templates/errores/h404.html,3\b\3b708c7325c4e761957432bdc9007ad9b52bea6b
-B
-editsdb/index.html,2\8\2875acea35095fb8d743d652f9aa5ec9a7265c67
-I
-editsdb/edit-contact.html,d\4\d4767c22e5c9af3c350bd85fd3a3986399584ac7
+E
+.vscode/settings.json,8\9\89aa447020cdcb580cea0495694d46a55941edbe
+8
+admin.py,0\f\0fff73b392c6335121238d1f18a4f83821fe1b1c

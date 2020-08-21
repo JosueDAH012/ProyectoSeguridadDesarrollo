@@ -195,6 +195,30 @@
         </div>
     </div>
     </div>
+    <br>
+    <div class="container" style="width: 75%; margin: 0 auto;">
+        <div class=" container">
+            <div class="row">
+                {% for product in products% }
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="../../static/img/Componentes/Tarjeta De Video/amd-daeon-rx-570.jpg"
+                            class="card-img-top" style="height: 200px; width: 286px;" alt="amd-daeon-rx-570">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.name}} {{product.precio}}</h5>
+                            <p class="card-text">{{product.descipcion}}</p>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al
+                                    carrito</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

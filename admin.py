@@ -90,7 +90,6 @@ def login():
                 return render_template('inicio/login.html')
     return render_template('home.html')
 
-
 # ruta para la clase registrar
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -138,12 +137,10 @@ def signup():
         return redirect(url_for('home'))
     return render_template('inicio/login.html')
 
-
 @app.route("/salir")
 def salir():
     session.clear()
     return redirect(url_for('login'))
-
 
 @app.route('/password')
 def password():
@@ -205,146 +202,406 @@ def cart():
 
 @app.route('/teclados')
 def teclados():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 26")
+        row = cursor.fetchall()
+        return render_template('perifericos/teclados.html', teclados=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/teclados.html')
-
 
 @app.route('/mouse')
 def mouse():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 23")
+        row = cursor.fetchall()
+        return render_template('perifericos/mouse.html', mouse=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/mouse.html')
 
 
 @app.route('/headset')
 def headset():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 20")
+        row = cursor.fetchall()
+        return render_template('perifericos/headset.html', headset=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/headset.html')
 
 
 @app.route('/mousepad')
 def mousepad():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 24")
+        row = cursor.fetchall()
+        return render_template('perifericos/mousepad.html', mousepad=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/mousepad.html')
 
 
 @app.route('/controles')
 def controles():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 19")
+        row = cursor.fetchall()
+        return render_template('perifericos/controles.html', controles=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/controles.html')
 
 
 @app.route('/parlantes')
 def parlantes():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 25")
+        row = cursor.fetchall()
+        return render_template('perifericos/parlantes.html', parlantes=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/parlantes.html')
 
 
 @app.route('/webcam')
 def webcam():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 27")
+        row = cursor.fetchall()
+        return render_template('perifericos/webcam.html', webcam=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/webcam.html')
 
 
 @app.route('/microfonos')
 def microfonos():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 22")
+        row = cursor.fetchall()
+        return render_template('perifericos/microfonos.html', microfonos=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/microfonos.html')
 
 
 @app.route('/impresoras')
 def impresoras():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 21")
+        row = cursor.fetchall()
+        return render_template('perifericos/impresoras.html', impresoras=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('perifericos/impresoras.html')
 
 
 @app.route('/combos')
 def combos():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 16")
+        row = cursor.fetchall()
+        return render_template('computadoras/combos.html', combos=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('computadoras/combos.html')
 
 
 @app.route('/gaming')
 def gaming():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 15")
+        row = cursor.fetchall()
+        return render_template('computadoras/gaming.html', gaming=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('computadoras/gaming.html')
 
 
 @app.route('/hogar')
 def hogar():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 17")
+        row = cursor.fetchall()
+        return render_template('computadoras/hogar.html', hogar=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('computadoras/hogar.html')
 
 
 @app.route('/laptop')
 def laptop():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 18")
+        row = cursor.fetchall()
+        return render_template('computadoras/laptop.html', laptop=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('computadoras/laptop.html')
 
 
 @app.route('/venta')
 def venta():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 29")
+        row = cursor.fetchall()
+        return render_template('computadoras/venta.html', venta=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('computadoras/venta.html')
 
 
 @app.route('/almacenamiento')
 def almacenamiento():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 7")
+        row = cursor.fetchall()
+        return render_template('componentes/almacenamiento.html',  almacenamiento=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/almacenamiento.html')
 
 
 @app.route('/cases')
 def cases():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 8")
+        row = cursor.fetchall()
+        return render_template('componentes/cases.html',  cases=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/cases.html')
 
 
 @app.route('/enfriamiento')
 def enfriamiento():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 9")
+        row = cursor.fetchall()
+        return render_template('componentes/enfriamiento.html',  enfriamiento=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/enfriamiento.html')
 
 
 @app.route('/monitores')
 def monitores():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 10")
+        row = cursor.fetchall()
+        return render_template('componentes/monitores.html',  monitores=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/monitores.html')
 
 
 @app.route('/motherboard')
 def motherboard():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 11")
+        row = cursor.fetchall()
+        return render_template('componentes/motherboard.html',  motherboard=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/motherboard.html')
 
 
 @app.route('/power')
 def power():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 28")
+        row = cursor.fetchall()
+        return render_template('componentes/power.html',  power=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/power.html')
 
 
 @app.route('/procesadores')
 def procesadores():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 12")
+        row = cursor.fetchall()
+        return render_template('componentes/procesadores.html',  procesadores=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/procesadores.html')
 
 
 @app.route('/ram')
 def ram():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 13")
+        row = cursor.fetchall()
+        return render_template('componentes/ram.html',  ram=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/ram.html')
 
 
 @app.route('/tarjetavideo')
 def tarjetavideo():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 14")
+        row = cursor.fetchall()
+        return render_template('componentes/tarjetavideo.html',  tarjetavideo=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('componentes/tarjetavideo.html')
 
 
 @app.route('/cables')
 def cables():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 1")
+        row = cursor.fetchall()
+        return render_template('accesorios/cables.html', cables=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('accesorios/cables.html')
 
 
 @app.route('/encapsuladores')
 def encapsuladores():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 2")
+        row = cursor.fetchall()
+        return render_template('accesorios/encapsuladores.html', encapsuladores=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('accesorios/encapsuladores.html')
 
 
 @app.route('/extencion')
 def extencion():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 3")
+        row = cursor.fetchall()
+        return render_template('accesorios/extencion.html', extencion=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('accesorios/extencion.html')
 
 
 @app.route('/led')
 def led():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 4")
+        row = cursor.fetchall()
+        return render_template('accesorios/led.html', led=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('accesorios/led.html')
 
 
 @app.route('/pastatermica')
 def pastatermica():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 5")
+        row = cursor.fetchall()
+        return render_template('accesorios/pastatermica.html', pastatermica=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('accesorios/pastatermica.html')
 
 
 @app.route('/sillas')
 def sillas():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 6")
+        row = cursor.fetchall()
+        return render_template('accesorios/sillas.html', sillas=row)
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
     return render_template('accesorios/sillas.html')
 
 

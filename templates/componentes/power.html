@@ -1,262 +1,44 @@
-<!doctype html>
-<html lang="en">
+{% extends "template.html" %}
 
-<head>
-  <title>fuentes de poder</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block content %}
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='img/shop.png') }}">
-</head>
-
-<body>
-  <div class="sb-nav-fixed">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">`
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="navbar-brand" href="{{ url_for('home') }}">El Mercadito</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <!--dropdown Computadoras -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Computadoras
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url_for('gaming') }}">Combo Gaming</a>
-                <a class="dropdown-item" href="{{ url_for('combos') }}">Combo Oficina</a>
-                <a class="dropdown-item" href="{{ url_for('hogar') }}">Hogar</a>
-                <a class="dropdown-item" href="{{ url_for('laptop') }}">Laptop</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ url_for('venta') }}">Punto de Venta</a>
-              </div>
-              <!--dropdown Componentes -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Componente
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url_for('procesadores') }}">Procesadores</a>
-                <a class="dropdown-item" href="{{ url_for('motherboard') }}">Tarjeta Madre</a>
-                <a class="dropdown-item" href="{{ url_for('ram') }}">Memoria Ram</a>
-                <a class="dropdown-item" href="{{ url_for('tarjetavideo') }}">Tarjetas de Video</a>
-                <a class="dropdown-item" href="{{ url_for('almacenamiento') }}">Almacenamiento</a>
-                <a class="dropdown-item" href="{{ url_for('enfriamiento') }}">Enfriamiento liquido</a>
-                <a class="dropdown-item" href="{{ url_for('power') }}">Fuentes de Poder</a>
-                <a class="dropdown-item" href="{{ url_for('cases') }}">Cases y Ventiladores</a>
-                <a class="dropdown-item" href="{{ url_for('monitores') }}">Monitores</a>
-              </div>
-              <!--dropdown Perifericos -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Perifericos
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url_for('teclados') }}">Teclados</a>
-                <a class="dropdown-item" href="{{ url_for('mouse') }}">Mouse</a>
-                <a class="dropdown-item" href="{{ url_for('headset') }}">Headset</a>
-                <a class="dropdown-item" href="{{ url_for('mousepad') }}">Mousepad</a>
-                <a class="dropdown-item" href="{{ url_for('controles') }}">Controles</a>
-                <a class="dropdown-item" href="{{ url_for('parlantes') }}">Parlantes</a>
-                <a class="dropdown-item" href="{{ url_for('webcam') }}">Webcam</a>
-                <a class="dropdown-item" href="{{ url_for('microfonos') }}">Microfonos</a>
-                <a class="dropdown-item" href="{{ url_for('impresoras') }}">Impresoras</a>
-              </div>
-              <!--dropdown Accesorios -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Accesorios
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ url_for('cables') }}">Cables</a>
-                <a class="dropdown-item" href="{{ url_for('encapsuladores') }}">Encapsuladores</a>
-                <a class="dropdown-item" href="{{ url_for('extencion') }}">Extenciones</a>
-                <a class="dropdown-item" href="{{ url_for('led') }}">Led</a>
-                <a class="dropdown-item" href="{{ url_for('pastatermica') }}">Pasta Termica</a>
-                <a class="dropdown-item" href="{{ url_for('sillas') }}">Sillas Gamer</a>
-              </div>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <span class="btn btn-light btn-sm ml-3">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-              </svg>
-              {{session['username']}}
-            </span>
-            <a class="btn btn-success btn-sm ml-3" href="{{ url_for('cart') }}">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bag" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M14 5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5zM1 4v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4H1z" />
-                <path d="M8 1.5A2.5 2.5 0 0 0 5.5 4h-1a3.5 3.5 0 1 1 7 0h-1A2.5 2.5 0 0 0 8 1.5z" />
-              </svg>
-              Cartera
-            </a>
-            <a href="/salir" class="btn btn-danger btn-sm ml-3" role="button" aria-pressed="true">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-square" fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-                  d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                <path fill-rule="evenodd"
-                  d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z" />
-                <path fill-rule="evenodd"
-                  d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z" />
-              </svg>
-              Salir
-            </a>
-          </form>
+<div class="container" style="width: 75%; margin: 0 auto;">
+  <div class=" container">
+    <div class="row">
+      {% for row in power %}
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem; margin-bottom : 25px">
+          <img src="../../static/img/Componentes/Fuentes de poder/{{row[0]}}.jpg" class="card-img-top"
+            style="height: 200px; width: 286px;" alt="{{row[1]}}">
+          <div class="card-body">
+            <h5 class="card-title">{{row[1]}}</h5>
+            <p class="card-text">{{row[5]}}</p>
+            <p class="card-text">₡{{row[3]}}</p>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
+          </div>
         </div>
       </div>
-    </nav>
+      {% endfor %}
+    </div>
   </div>
-  <br>
-  <div class="container" style="width: 75%; margin: 0 auto;">
-    <div class=" container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Fuentes de poder/FP modulares/Corsair-ax-1200i.jpg"
-              class="card-img-top" style="height: 200px; width: 286px;" alt="Corsair-ax-1200i">
-            <div class="card-body">
-              <h5 class="card-title">Corsair AX 1200i</h5>
-              <p class="card-text"></p>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="../../static/img/Componentes/Fuentes de poder/FP modulares/fuente-de-alimentacion-corasir-rm650i-650v.jpg"
-              class="card-img-top" style="height: 200px; width: 286px;"
-              alt="fuente-de-alimentacion-corasir-rm650i-650v">
-            <div class="card-body">
-              <h5 class="card-title">Corsair RM650i 650v</h5>
-              <p class="card-text"></p>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img
-              src="../../static/img/Componentes/Fuentes de poder/FP modulares/fuente-de-alimentacion-rog-thor-1200w.jpg"
-              class="card-img-top" style="height: 200px; width: 286px;" alt="fuente-de-alimentacion-rog-thor-1200w">
-            <div class="card-body">
-              <h5 class="card-title">ROG THOR 1200w</h5>
-              <p class="card-text"></p>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-              </div>
-            </div>
-          </div>
+</div>
+<div class="float-right">
+  <p class="container-fluid">
+    <a href="{{ url_for('power') }}">Volver arriba</a>
+  </p>
+</div>
+<br>
+<div class="position-relative">
+  <div id="layoutAuthentication_footer"></div>
+  <footer class="py-4 bg-light mt-auto">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center justify-content-between small">
+        <div class="text-muted">Copyright &copy; El Mercadito</div>
+        <div>
+          <a href="{{ url_for('terminos') }}">Privacy Policy · Terms &amp; Conditions</a>
         </div>
       </div>
     </div>
-  </div>
-  <br>
-  <div class="container" style="width: 75%; margin: 0 auto;">
-    <div class=" container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Fuentes de poder/FP No modulares/atx-sd550-550w.jpg"
-              class="card-img-top" style="height: 200px; width: 286px;" alt="atx-sd550-550w">
-            <div class="card-body">
-              <h5 class="card-title">ATX SD550 550w</h5>
-              <p class="card-text"></p>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Fuentes de poder/FP No modulares/corsair-vs650-650w.jpg"
-              class="card-img-top" style="height: 200px; width: 286px;" alt="corsair-vs650-650w">
-            <div class="card-body">
-              <h5 class="card-title">Corsair VS650 650w</h5>
-              <p class="card-text"></p>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="../../static/img/Componentes/Fuentes de poder/FP No modulares/evga-600bq-600w.jpg"
-              class="card-img-top" style="height: 200px; width: 286px;" alt="evga-600bq-600w">
-            <div class="card-body">
-              <h5 class="card-title">EVGA 600BQ 600w</h5>
-              <p class="card-text"></p>
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="float-right">
-    <p class="container-fluid">
-      <a href="{{ url_for('power') }}">Volver arriba</a>
-    </p>
-  </div>
-  <br>
-  <div class="position-relative">
-    <div id="layoutAuthentication_footer"></div>
-    <footer class="py-4 bg-light mt-auto">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between small">
-          <div class="text-muted">Copyright &copy; El Mercadito</div>
-          <div>
-            <a href="{{ url_for('terminos') }}">Privacy Policy · Terms &amp; Conditions</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+  </footer>
+</div>
+{% endblock%}
