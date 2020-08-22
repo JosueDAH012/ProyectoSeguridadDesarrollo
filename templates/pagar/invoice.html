@@ -154,12 +154,11 @@
         <div><a href="mailto:company@example.com">company@example.com</a></div>
       </div>
       <div id="project">
-        <div><span>PROJECT</span> Website development</div>
-        <div><span>CLIENT</span> John Doe</div>
-        <div><span>ADDRESS</span> 796 Silver Harbour, TX 79273, US</div>
-        <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
-        <div><span>DATE</span> August 17, 2015</div>
-        <div><span>DUE DATE</span> September 17, 2015</div>
+        <div><span>PROJECT</span> El Mercadito</div>
+        <div><span>CLIENT</span>{{session['username']}}</div>
+        <div><span>ADDRESS</span>{{session['direccion']}}</div>
+        <div><span>EMAIL</span> <a href="mailto:john@example.com">{{session['correo']}}</a></div>
+        <div><span>DATE</span> August 22, 2020</div>
       </div>
     </header>
     <main>
@@ -193,8 +192,11 @@
         <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
       </div>
     </main>
+    <button><a href="{{ url_for('home') }}"></a></button>
+    <a href="{{ url_for('home') }}"></a>
     <footer>
       Invoice was created on a computer and is valid without the signature and seal.
     </footer>
+  
   </body>
 </html>

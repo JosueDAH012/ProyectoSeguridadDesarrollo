@@ -157,7 +157,7 @@ def signup():
                 flash("La direccion debe contener solo letras", "alert-warning")
             else:
                 sQuery = "INSERT INTO Usuario (Nombre, Apellido, Cedula, Correo, Telefono, Password, Direccion) VALUES ( %s, %s, %s, %s, %s, %s, %s)"
-                cursor.execute(sQuery, [nombre, apellido, cedula, correo, telefono, password_encriptado], direccion)
+                cursor.execute(sQuery, [nombre, apellido, cedula, correo, telefono, password_encriptado, direccion])
                 mysql.connection.commit()
                 flash("Se ha registrado exitosamente!", "alert-warning")
         elif request.method == 'POST':
@@ -232,7 +232,7 @@ def cart():
     rows = cursor.fetchall()
     data = []
     for row in rows:
-        cursor.execute("SELECT * from producto where idProducto = %s" % row[0])
+        cursor.execute("SELECT * from Producto where idProducto = %s" % row[0])
         ap = cursor.fetchall()
         for aa in ap:
             data.append(aa)
@@ -677,7 +677,7 @@ def checkout():
     rows = cursor.fetchall()
     data = []
     for row in rows:
-        cursor.execute("SELECT * from producto where idProducto = %s" % row[0])
+        cursor.execute("SELECT * from Producto where idProducto = %s" % row[0])
         ap = cursor.fetchall()
         for aa in ap:
             data.append(aa)
