@@ -1,6 +1,7 @@
 # importaciones de la libreria de Flask para la base de datos y web
-from flask import Flask, render_template, request, flash, redirect, url_for, session, abort
+from flask import Flask, render_template, request, flash, redirect, url_for, session, abort, jsonify
 from flask_mysqldb import MySQL
+from flask_mail import Mail, Message
 import bcrypt
 import re
 
@@ -25,12 +26,21 @@ dictConfig({
 # inicializacion
 app = Flask(__name__, static_url_path='/static')
 mysql = MySQL(app)
+mail = Mail(app)
 
 # conexion a base de datos
 app.config['MYSQL_HOST'] = '35.235.106.218'
 app.config['MYSQL_USER'] = 'MowgliG'
 app.config['MYSQL_PASSWORD'] = 'Josuedavid01'
 app.config['MYSQL_DB'] = 'TIENDA'
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=587,
+    MAIL_USE_TLS=True,
+    MAIL_USE_SSL=False,
+    MAIL_USERNAME='Jucalova101@gmail.com',
+    MAIL_PASSWORD='Josuedavid01'
+)
 
 # configuracion
 app.secret_key = "server-ca.pem"
@@ -38,6 +48,19 @@ print("Conectado a la Base de Datos")
 
 # semilla para encriptamiento
 semilla = bcrypt.gensalt()
+
+
+# enviar correo
+@app.route('/send-mail/')
+def send_mail():
+    msg = mail.send_message(
+        'Send Mail tutorial!',
+        sender='Jucalova101@gmail.com',
+        recipients=session['correo'],
+        # html= render_template('')
+    )
+    return msg
+
 
 # ruta para la clase principal
 @app.route('/')
@@ -47,6 +70,7 @@ def main():
     else:
         return render_template('inicio/login.html')
 
+
 # ruta para la clase home
 @app.route('/home', )
 def home():
@@ -54,6 +78,7 @@ def home():
         return render_template('home.html')
     else:
         return render_template('inicio/login.html')
+
 
 # ruta para la clase login
 @app.route('/login', methods=['GET', 'POST'])
@@ -68,19 +93,20 @@ def login():
             correo = request.form['emailLogin']
             password = request.form['passwordLogin']
             password_encode = password.encode("utf-8")
-
             cursor = mysql.connection.cursor()
             sQuery = "SELECT * FROM Usuario WHERE Correo = %s"
             cursor.execute(sQuery, [correo])
             account = cursor.fetchone()
             cursor.close()
-
             if (account != None):
                 password_encriptado_encode = account[6].encode()
                 if (bcrypt.checkpw(password_encode, password_encriptado_encode)):
                     session['loggedin'] = True
+                    session['id'] = account[0]
                     session['username'] = account[1]
+                    session['apellido'] = account[2]
                     session['correo'] = account[4]
+                    session['direccion'] = account[7]
                     return redirect(url_for('home'))
                 else:
                     flash("El Password o Correo no son correctos", "alert-warning")
@@ -89,6 +115,7 @@ def login():
                 flash("El Correo no existe", "alert-warning")
                 return render_template('inicio/login.html')
     return render_template('home.html')
+
 
 # ruta para la clase registrar
 @app.route('/signup', methods=['GET', 'POST'])
@@ -99,20 +126,19 @@ def signup():
         else:
             return render_template('inicio/signup.html')
     else:
-        if request.method == 'POST' and 'nameRegistro' in request.form and 'surnameRegistro' in request.form and 'idRegistro' in request.form and 'emailRegistro' in request.form and 'phoneRegistro' in request.form and 'passwordRegistro' in request.form:
-
+        if request.method == 'POST' and 'nameRegistro' in request.form and 'surnameRegistro' in request.form and 'idRegistro' in request.form and 'emailRegistro' in request.form and 'phoneRegistro' in request.form and 'passwordRegistro' in request.form and 'direccionRegistro' in request.form:
             nombre = request.form['nameRegistro']
             apellido = request.form['surnameRegistro']
             cedula = request.form['idRegistro']
             correo = request.form['emailRegistro']
             telefono = request.form['phoneRegistro']
+            direccion = request.form['direccionRegistro']
             password = request.form['passwordRegistro']
             password_encode = password.encode("utf-8")
             password_encriptado = bcrypt.hashpw(password_encode, semilla)
             cursor = mysql.connection.cursor()
             cursor.execute('SELECT * FROM Usuario WHERE Correo = %s', [correo])
             account = cursor.fetchone()
-
             if account:
                 flash("Esta cuenta ya existe!", "alert-warning")
             elif not re.match(r'[A-Za-z]+', nombre):
@@ -127,9 +153,11 @@ def signup():
                 flash("El telefono solo debe tener números", "alert-warning")
             elif not re.match(r'[A-Za-z0-9]+', password):
                 flash("La contraseña solo debe tener números y letras", "alert-warning")
+            elif not re.match(r'[A-Za-z0-9]+', direccion):
+                flash("La direccion debe contener solo letras", "alert-warning")
             else:
-                sQuery = "INSERT INTO Usuario (Nombre, Apellido, Cedula, Correo, Telefono, Password) VALUES ( %s, %s, %s, %s, %s, %s)"
-                cursor.execute(sQuery, [nombre, apellido, cedula, correo, telefono, password_encriptado])
+                sQuery = "INSERT INTO Usuario (Nombre, Apellido, Cedula, Correo, Telefono, Password, Direccion) VALUES ( %s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute(sQuery, [nombre, apellido, cedula, correo, telefono, password_encriptado], direccion)
                 mysql.connection.commit()
                 flash("Se ha registrado exitosamente!", "alert-warning")
         elif request.method == 'POST':
@@ -137,10 +165,12 @@ def signup():
         return redirect(url_for('home'))
     return render_template('inicio/login.html')
 
+
 @app.route("/salir")
 def salir():
     session.clear()
     return redirect(url_for('login'))
+
 
 @app.route('/password')
 def password():
@@ -197,7 +227,19 @@ def access_error(error):
 
 @app.route('/cart')
 def cart():
-    return render_template('pagar/cart.html')
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * from carritofinal where iduser = %s" % session["id"])
+    rows = cursor.fetchall()
+    data = []
+    for row in rows:
+        cursor.execute("SELECT * from producto where idProducto = %s" % row[0])
+        ap = cursor.fetchall()
+        for aa in ap:
+            data.append(aa)
+    total = 0
+    for prices in data:
+        total += prices[3]
+    return render_template('pagar/cart.html', cart=data, total=len(data), finalprice=total)
 
 
 @app.route('/teclados')
@@ -212,6 +254,7 @@ def teclados():
     finally:
         cursor.close()
     return render_template('perifericos/teclados.html')
+
 
 @app.route('/mouse')
 def mouse():
@@ -401,7 +444,7 @@ def almacenamiento():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 7")
         row = cursor.fetchall()
-        return render_template('componentes/almacenamiento.html',  almacenamiento=row)
+        return render_template('componentes/almacenamiento.html', almacenamiento=row)
     except Exception as e:
         print(e)
     finally:
@@ -415,7 +458,7 @@ def cases():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 8")
         row = cursor.fetchall()
-        return render_template('componentes/cases.html',  cases=row)
+        return render_template('componentes/cases.html', cases=row)
     except Exception as e:
         print(e)
     finally:
@@ -429,7 +472,7 @@ def enfriamiento():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 9")
         row = cursor.fetchall()
-        return render_template('componentes/enfriamiento.html',  enfriamiento=row)
+        return render_template('componentes/enfriamiento.html', enfriamiento=row)
     except Exception as e:
         print(e)
     finally:
@@ -443,7 +486,7 @@ def monitores():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 10")
         row = cursor.fetchall()
-        return render_template('componentes/monitores.html',  monitores=row)
+        return render_template('componentes/monitores.html', monitores=row)
     except Exception as e:
         print(e)
     finally:
@@ -457,7 +500,7 @@ def motherboard():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 11")
         row = cursor.fetchall()
-        return render_template('componentes/motherboard.html',  motherboard=row)
+        return render_template('componentes/motherboard.html', motherboard=row)
     except Exception as e:
         print(e)
     finally:
@@ -471,7 +514,7 @@ def power():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 28")
         row = cursor.fetchall()
-        return render_template('componentes/power.html',  power=row)
+        return render_template('componentes/power.html', power=row)
     except Exception as e:
         print(e)
     finally:
@@ -485,7 +528,7 @@ def procesadores():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 12")
         row = cursor.fetchall()
-        return render_template('componentes/procesadores.html',  procesadores=row)
+        return render_template('componentes/procesadores.html', procesadores=row)
     except Exception as e:
         print(e)
     finally:
@@ -499,7 +542,7 @@ def ram():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 13")
         row = cursor.fetchall()
-        return render_template('componentes/ram.html',  ram=row)
+        return render_template('componentes/ram.html', ram=row)
     except Exception as e:
         print(e)
     finally:
@@ -513,7 +556,7 @@ def tarjetavideo():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM Producto WHERE TipoProducto = 14")
         row = cursor.fetchall()
-        return render_template('componentes/tarjetavideo.html',  tarjetavideo=row)
+        return render_template('componentes/tarjetavideo.html', tarjetavideo=row)
     except Exception as e:
         print(e)
     finally:
@@ -613,6 +656,37 @@ def test():
 @app.route('/template')
 def template():
     return render_template('template.html')
+
+
+@app.route('/addtocart', methods=['POST'])
+def addtocart():
+    if request.is_json:
+        data = request.get_json()
+        cursor = mysql.connection.cursor()
+        cursor.execute(
+            "INSERT INTO `carritofinal`( `iduser`, `idproducto`) VALUES ('%s','%s')" % (data["usuario"], data["id"]))
+        mysql.connection.commit()
+        return "ok"
+    return "err"
+
+
+@app.route('/checkout', methods=['GET'])
+def checkout():
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * from carritofinal where iduser = %s" % session["id"])
+    rows = cursor.fetchall()
+    data = []
+    for row in rows:
+        cursor.execute("SELECT * from producto where idProducto = %s" % row[0])
+        ap = cursor.fetchall()
+        for aa in ap:
+            data.append(aa)
+    total = 0
+    for prices in data:
+        total += prices[3]
+    cursor.execute("DELETE FROM `carritofinal` WHERE `iduser`=%s" % session["id"])
+    mysql.connection.commit()
+    return render_template('pagar/invoice.html', data=data, total=len(data), finalprice=total)
 
 
 if __name__ == '__main__':

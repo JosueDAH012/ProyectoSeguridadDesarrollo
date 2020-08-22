@@ -14,7 +14,7 @@
             <h5 class="card-title">{{row[1]}}</h5>
             <p class="card-text">{{row[5]}}</p>
             <p class="card-text">₡{{row[3]}}</p>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
+            <button onclick="carrito({{row[0]}},{{session['id']}})" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
           </div>
         </div>
       </div>

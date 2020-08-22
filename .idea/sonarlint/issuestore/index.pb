@@ -85,3 +85,5 @@ E
 .vscode/settings.json,8\9\89aa447020cdcb580cea0495694d46a55941edbe
 8
 admin.py,0\f\0fff73b392c6335121238d1f18a4f83821fe1b1c
+G
+templates/template.html,4\1\41d3b4a4b71afe0c223778e57c23244caee1baec

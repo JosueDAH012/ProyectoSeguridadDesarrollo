@@ -34,3 +34,29 @@ def EliminarTodoCarrito(id_carrito):
 
 #Aca se muestran los datos que hay dentro del carrito
 SELECT P.descripcion as "Producto", P.Precio as "Precio Unitario", count(*) as "Unidades" FROM CARRITO C INNER JOIN carritoDetalle CD ON C.id = CD.id_carrito INNER JOIN Producto P ON CD.id_producto = P.codigo WHERE C.id = <id del carrito a hacer checkout> GROUP BY P.descripcion, P.Precio, P.codigo;
+
+select C.id as IdCarrito from carrito C inner join Usuario U where Usuario = {usuarioArg} and C.id = MAX(c.id);
+
+def añadir
+    if carrito_disponible:
+         insert del carrito    
+         select del id del carrito y lo guarda a la variable global
+         carrito_disponible = true
+    insert detalle del carrito (registro a carritoDetalle {carrito_id}
+
+ELIMINAR DE CARRITO:
+delete from carrito where id = {carrito_id}
+select 
+	P.Nombre as Producto,
+    P.Descripcion as Descripcion,
+    CD.cantidad as Cantidad,
+	P.Precio*CD.cantidad as "Precio"
+from Usuario U 
+	inner join carrito C 
+		on U.idUsuario = C.usuario
+	inner join carritoDetalle CD
+		on C.id = CD.id_carrito
+	inner join Producto P
+		on CD.id_producto = P.idProducto
+group by P.idProducto
+where C.id == {carrito_id};
