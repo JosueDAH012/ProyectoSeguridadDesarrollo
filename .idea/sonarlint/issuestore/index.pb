@@ -87,3 +87,5 @@ E
 admin.py,0\f\0fff73b392c6335121238d1f18a4f83821fe1b1c
 G
 templates/template.html,4\1\41d3b4a4b71afe0c223778e57c23244caee1baec
+L
+templates/pagar/invoice.html,5\b\5bf943c47a454ffddbea8f94d389ee5165f0e436
