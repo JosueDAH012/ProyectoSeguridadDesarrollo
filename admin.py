@@ -29,17 +29,17 @@ mysql = MySQL(app)
 mail = Mail(app)
 
 # conexion a base de datos
-app.config['MYSQL_HOST'] = '35.235.106.218'
+app.config['MYSQL_HOST'] = 'xxxxxxxxx'
 app.config['MYSQL_USER'] = 'MowgliG'
-app.config['MYSQL_PASSWORD'] = 'Josuedavid01'
+app.config['MYSQL_PASSWORD'] = 'xxxxx'
 app.config['MYSQL_DB'] = 'TIENDA'
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=587,
     MAIL_USE_TLS=True,
     MAIL_USE_SSL=False,
-    MAIL_USERNAME='Jucalova101@gmail.com',
-    MAIL_PASSWORD='Josuedavid01'
+    MAIL_USERNAME='xxxxx',
+    MAIL_PASSWORD='xxxxxx'
 )
 
 # configuracion
